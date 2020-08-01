@@ -3,6 +3,6 @@ package com.example.demoeventsbooking.retrofitManager
 import retrofit2.Response
 
 interface ApiResponseCallback {
-    fun onSuccessCallback(response: Response<Any?>, serviceCallId:Int)
-    fun onFailureCallback(throwable: Throwable,serviceCallId:Int)
+    fun<T> onSuccessCallback(response: Response<T>, serviceCallId:Int)
+    fun onFailureCallback(errorMsg: String?,serviceCallId:Int)
 }

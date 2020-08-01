@@ -1,0 +1,70 @@
+package com.example.demoeventsbooking.homeSection.dataManager
+
+import com.google.gson.annotations.Expose
+import com.google.gson.annotations.SerializedName
+
+data class ResponseModelEvents(
+    @SerializedName("list")
+    @Expose
+    val list: EventsList?
+)
+
+data class EventsList(
+    @SerializedName("masterList")
+    @Expose
+    val masterList: LinkedHashMap<String, MasterListEventModel>?
+)
+
+data class MasterListEventModel(
+    @SerializedName("_id")
+    @Expose
+    val eventId: String?,
+    @SerializedName("min_show_start_time")
+    @Expose
+    val minShowStartTime: Int,
+    @SerializedName("name")
+    @Expose
+    val eventName: String?,
+    @SerializedName("type")
+    @Expose
+    val eventType: String?,
+    @SerializedName("slug")
+    @Expose
+    val eventSlug: String?,
+    @SerializedName("horizontal_cover_image")
+    @Expose
+    val horizontalCoverImage: String?,
+    @SerializedName("city")
+    @Expose
+    val eventCity: String?,
+    @SerializedName("venue_id")
+    @Expose
+    val eventVenueId: String?,
+    @SerializedName("venue_name")
+    @Expose
+    val eventVenueName: String?,
+    @SerializedName("venue_date_string")
+    @Expose
+    val eventVenueDateString: String?,
+    @SerializedName("is_rsvp")
+    @Expose
+    val eventIsRsvp: String?,
+    @SerializedName("event_state")
+    @Expose
+    val eventState: String?,
+    @SerializedName("price_display_string")
+    @Expose
+    val eventPriceDisplayString: String?,
+    @SerializedName("communication_strategy")
+    @Expose
+    val eventCommunicationStrategy: String?,
+    @SerializedName("model")
+    @Expose
+    val eventModel: String?,
+    @SerializedName("popularity_score")
+    @Expose
+    val eventPopularityScore: Double?,
+    @SerializedName("min_price")
+    @Expose
+    val eventMinPrice: Int?
+)
