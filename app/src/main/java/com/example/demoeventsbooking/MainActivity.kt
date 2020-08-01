@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.demoeventsbooking.databinding.ActivityMainBinding
+import com.example.demoeventsbooking.helpers.UtilConstants
 import com.example.demoeventsbooking.helpers.UtilMethods
 import com.example.demoeventsbooking.helpers.isNetworkAvailable
 import com.example.demoeventsbooking.homeSection.dataManager.ViewModelEventsList
@@ -34,6 +35,21 @@ class MainActivity : AppCompatActivity() {
 
     private fun initObserver() {
         mEventViewModel?.getAllEvents()?.observe(this, Observer {
+
+            when(it.status) {
+                UtilConstants.STATUS_SUCCESS -> {
+
+                }
+                UtilConstants.STATUS_FAILURE -> {
+
+                }
+                UtilConstants.STATUS_NO_DATA -> {
+
+                }
+                else -> {
+
+                }
+            }
 
         })
     }
