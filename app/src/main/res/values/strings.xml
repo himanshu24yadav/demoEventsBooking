@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DemoEventsBooking</string>
+    <string name="all_events_text">Discover Events</string>
 </resources>
