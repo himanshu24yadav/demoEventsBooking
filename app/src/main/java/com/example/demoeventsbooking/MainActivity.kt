@@ -24,9 +24,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun init() {
         initObject()
-        mLayoutBinding.text.setOnClickListener {
-          initFetchEventData()
-        }
+        initFetchEventData()
         initObserver()
     }
 
