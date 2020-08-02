@@ -14,6 +14,7 @@
             style="@style/TitleTextAppearance"
             android:layout_width="match_parent"
             android:layout_height="72dp"
+            android:textStyle="bold"
             android:text="@string/all_events_text"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,8 +22,64 @@
             android:id="@+id/rv_events"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title_tv" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <TextView
+            android:id="@+id/progress_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/wait_fetching_events"
+            android:gravity="center"
+            style="@style/ItemTextAppearance"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/progress_bar" />
+
+        <TextView
+            android:id="@+id/error_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/something_went_wrong"
+            android:gravity="center"
+            style="@style/ItemTextAppearance"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <TextView
+            android:id="@+id/retry_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/retry"
+            android:padding="12dp"
+            android:gravity="center"
+            style="@style/ItemTextAppearance"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintTop_toBottomOf="@id/error_tv" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/error_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="error_tv,retry_tv" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/progress_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:constraint_referenced_ids="progress_bar,progress_tv" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

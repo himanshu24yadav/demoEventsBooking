@@ -1,6 +1,7 @@
 package com.example.demoeventsbooking
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -14,6 +15,11 @@ import com.example.demoeventsbooking.helpers.isNetworkAvailable
 import com.example.demoeventsbooking.homeSection.adapter.EventAdapter
 import com.example.demoeventsbooking.homeSection.dataManager.MasterListEventModel
 import com.example.demoeventsbooking.homeSection.dataManager.ViewModelEventsList
+
+const val VIEW_FOR_SUCCESS = 100
+const val VIEW_FOR_FAILURE = 200
+const val VIEW_FOR_NO_DATA = 300
+const val VIEW_FOR_NETWORK_NOT_AVAILABLE = 400
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,6 +41,20 @@ class MainActivity : AppCompatActivity() {
         initFetchEventData()
         initObserver()
         initView()
+        initListeners()
+    }
+
+    private fun initListeners() {
+        mLayoutBinding.retryTv.setOnClickListener {
+            if(isNetworkAvailable()) {
+                mLayoutBinding.errorGroup.visibility = View.GONE
+                mLayoutBinding.rvEvents.visibility = View.GONE
+                mLayoutBinding.progressGroup.visibility = View.VISIBLE
+                initFetchEventData()
+            } else {
+                UtilMethods.showToast(this,"No network")
+            }
+        }
     }
 
     private fun initView() {
@@ -57,16 +77,16 @@ class MainActivity : AppCompatActivity() {
                 UtilConstants.STATUS_SUCCESS -> {
                     mEventList.clear()
                     mEventList.addAll(it.eventData)
-                    setEventAdapter()
+                    updateView(VIEW_FOR_SUCCESS)
                 }
                 UtilConstants.STATUS_FAILURE -> {
-
+                    updateView(VIEW_FOR_FAILURE)
                 }
                 UtilConstants.STATUS_NO_DATA -> {
-
+                    updateView(VIEW_FOR_NO_DATA)
                 }
                 else -> {
-
+                    updateView(VIEW_FOR_FAILURE)
                 }
             }
 
@@ -77,7 +97,33 @@ class MainActivity : AppCompatActivity() {
         if(isNetworkAvailable()) {
             mEventViewModel?.fetchAllEvents()
         } else {
-            UtilMethods.showToast(this,"Network not available")
+            updateView(VIEW_FOR_NETWORK_NOT_AVAILABLE)
+        }
+    }
+
+    private fun updateView(viewType:Int) {
+        mLayoutBinding.progressGroup.visibility = View.GONE
+        when(viewType) {
+            VIEW_FOR_SUCCESS -> {
+                mLayoutBinding.errorGroup.visibility = View.GONE
+                mLayoutBinding.rvEvents.visibility = View.VISIBLE
+                setEventAdapter()
+            }
+            VIEW_FOR_NO_DATA -> {
+                mLayoutBinding.errorGroup.visibility = View.VISIBLE
+                mLayoutBinding.rvEvents.visibility = View.GONE
+                mLayoutBinding.errorTv.text = getString(R.string.no_events_available_text)
+            }
+            VIEW_FOR_FAILURE -> {
+                mLayoutBinding.errorGroup.visibility = View.VISIBLE
+                mLayoutBinding.rvEvents.visibility = View.GONE
+                mLayoutBinding.errorTv.text = getString(R.string.something_went_wrong)
+            }
+            VIEW_FOR_NETWORK_NOT_AVAILABLE -> {
+                mLayoutBinding.errorGroup.visibility = View.VISIBLE
+                mLayoutBinding.rvEvents.visibility = View.GONE
+                mLayoutBinding.errorTv.text = getString(R.string.no_network_text)
+            }
         }
     }
 

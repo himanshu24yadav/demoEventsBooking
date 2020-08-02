@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">DemoEventsBooking</string>
     <string name="all_events_text">Discover Events</string>
+    <string name="wait_fetching_events">Wait Fetching events...</string>
+    <string name="something_went_wrong">Something Went Wrong</string>
+    <string name="retry">RETRY</string>
+    <string name="no_events_available_text">No Events Available</string>
+    <string name="no_network_text">Network not available</string>
 </resources>

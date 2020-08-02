@@ -35,7 +35,7 @@ class EventAdapter(private val mContext:Context?,private var mEventList:ArrayLis
 
     private fun setImageWithGlide(eventIv: ImageView, eventData: MasterListEventModel?) {
         if(mContext==null) {
-            eventIv.setImageResource(R.drawable.ic_launcher_background)
+            eventIv.setImageResource(R.drawable.bg_default_event)
             return
         }
 
@@ -43,7 +43,7 @@ class EventAdapter(private val mContext:Context?,private var mEventList:ArrayLis
             Glide
                 .with(mContext)
                 .load(it)
-                .placeholder(R.drawable.ic_launcher_background)
+                .placeholder(R.drawable.bg_default_event)
                 .into(eventIv)
         }
     }
