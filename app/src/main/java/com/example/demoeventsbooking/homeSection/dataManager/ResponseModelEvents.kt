@@ -66,5 +66,20 @@ data class MasterListEventModel(
     val eventPopularityScore: Double?,
     @SerializedName("min_price")
     @Expose
-    val eventMinPrice: Int?
+    val eventMinPrice: Int?,
+    @SerializedName("category_id")
+    @Expose
+    val categoryInfo: CategoryInfo?
+)
+
+data class CategoryInfo(
+    @SerializedName("_id")
+    @Expose
+    val cat_id: String?,
+    @SerializedName("name")
+    @Expose
+    val cat_name: String?,
+    @SerializedName("icon_img")
+    @Expose
+    val cat_img: String?
 )
