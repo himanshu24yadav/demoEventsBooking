@@ -9,7 +9,7 @@ class UtilMethods {
             val hashMap = HashMap<String,String>()
             hashMap[UtilConstants.PARAM_NORM] = "1"
             hashMap[UtilConstants.PARAM_FILTER_BY] = "go-out"
-            hashMap[UtilConstants.PARAM_CITY] = city ?: "mumbai"
+            hashMap[UtilConstants.PARAM_CITY] = city ?: UtilConstants.DEFAULT_CITY
             return hashMap
         }
 

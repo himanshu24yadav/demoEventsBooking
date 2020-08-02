@@ -72,7 +72,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun initObserver() {
         mEventViewModel?.getAllEvents()?.observe(this, Observer {
-
             when(it.status) {
                 UtilConstants.STATUS_SUCCESS -> {
                     mEventList.clear()
@@ -89,7 +88,6 @@ class MainActivity : AppCompatActivity() {
                     updateView(VIEW_FOR_FAILURE)
                 }
             }
-
         })
     }
 

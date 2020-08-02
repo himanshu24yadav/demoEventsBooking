@@ -4,6 +4,13 @@ import com.example.demoeventsbooking.helpers.UtilConstants.Companion.API_CONSTAN
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 
+/**
+ * Use when you want to hit API for the data
+ * @enqueueApiCall method takes apiClient (default apiClient is provided if not received) & retrofitInstance (default instance is provided if not given)
+ * method @return RetrofitCallbackManager instance
+ * with the RetrofitCallbackManager you need to call methods to enqueue your request for the result
+**/
+
 class ApiServiceProvider (private var apiClient: OkHttpClient? = null,private var retrofit: Retrofit? = null) {
 
     private var apiInterface:ApiInterface? =null
