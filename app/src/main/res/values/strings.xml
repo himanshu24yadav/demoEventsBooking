@@ -6,4 +6,10 @@
     <string name="retry">RETRY</string>
     <string name="no_events_available_text">No Events Available</string>
     <string name="no_network_text">Network not available</string>
+    <string name="online_text">Online</string>
+    <string name="lucknow_text">Lucknow</string>
+    <string name="delhi_text">Delhi</string>
+    <string name="mumbai_text">Mumbai</string>
+    <string name="pune_text">Pune</string>
+    <string name="kolkata_text">Kolkata</string>
 </resources>

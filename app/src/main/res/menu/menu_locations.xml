@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/online_item"
+            android:title="@string/online_text" />
+        <item
+            android:id="@+id/lucknow_item"
+            android:title="@string/lucknow_text" />
+        <item
+            android:id="@+id/delhi_item"
+            android:title="@string/delhi_text" />
+        <item
+            android:id="@+id/mumbai_item"
+            android:title="@string/mumbai_text" />
+        <item
+            android:id="@+id/pune_item"
+            android:title="@string/pune_text" />
+        <item
+            android:id="@+id/kolkata_item"
+            android:title="@string/kolkata_text" />
+    </group>
+
+</menu>
