@@ -80,13 +80,6 @@ class MainActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener, Ada
         setSpinnerView()
     }
 
-    private fun setSpinnerView() {
-        val eventTypes = listOf(EVENT_TYPE_ALL, EVENT_TYPE_FEATURED, EVENT_TYPE_POPULAR)
-        val dataAdapter = ArrayAdapter(this,R.layout.layout_spinner_item, eventTypes)
-        dataAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
-        mLayoutBinding.titleSpinner.adapter = dataAdapter
-    }
-
     private fun initObject() {
         mEventViewModel = ViewModelProvider(this).get(ViewModelEventsList::class.java)
         mLinearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
@@ -122,6 +115,13 @@ class MainActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener, Ada
         } else {
             updateView(VIEW_FOR_NETWORK_NOT_AVAILABLE)
         }
+    }
+
+    private fun setSpinnerView() {
+        val eventTypes = listOf(EVENT_TYPE_ALL, EVENT_TYPE_FEATURED, EVENT_TYPE_POPULAR)
+        val dataAdapter = ArrayAdapter(this,R.layout.layout_spinner_item, eventTypes)
+        dataAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
+        mLayoutBinding.titleSpinner.adapter = dataAdapter
     }
 
     private fun updateView(viewType:Int) {

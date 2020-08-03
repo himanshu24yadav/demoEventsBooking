@@ -5,10 +5,18 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 
 /**
- * Use when you want to hit API for the data
+ * Use when you want to make API request
  * @enqueueApiCall method takes apiClient (default apiClient is provided if not received) & retrofitInstance (default instance is provided if not given)
- * method @return RetrofitCallbackManager instance
- * with the RetrofitCallbackManager you need to call methods to enqueue your request for the result
+ * @enqueueApiCall returns RetrofitCallbackManager instance
+ * with the RetrofitCallbackManager you need to call methods to enqueue your request for the response
+ *
+ * Flow to make a api request must be
+ *  APIServiceProvider ---> enqueueApiCall -----> RetrofitCallbackManager ----> call your respective method to enqueue request
+ *  example : ApiServiceProvider().enqueueApiCall(baseUrl,callback,paramHashMap,apiProviderConstant).homePageData
+ *
+ * You can pass your own apiClient or retrofitInstance to the constructor of ApiServiceProvider by defining them inside OkHttpClientBuilder
+ * and RetrofitInstanceBuilder respectively
+ *
 **/
 
 class ApiServiceProvider (private var apiClient: OkHttpClient? = null,private var retrofit: Retrofit? = null) {
