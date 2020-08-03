@@ -21,7 +21,6 @@ import com.example.demoeventsbooking.homeSection.dataManager.MasterListEventMode
 import com.example.demoeventsbooking.homeSection.dataManager.ViewModelEventsList
 import com.example.demoeventsbooking.homeSection.model.ModelEvents
 
-
 const val VIEW_FOR_SUCCESS = 100
 const val VIEW_FOR_FAILURE = 200
 const val VIEW_FOR_NO_DATA = 300
