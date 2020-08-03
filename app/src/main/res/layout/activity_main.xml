@@ -9,13 +9,14 @@
         android:background="@drawable/bg_home"
         tools:context=".MainActivity">
 
-        <TextView
-            android:id="@+id/title_tv"
-            style="@style/TitleTextAppearance"
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/title_spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="@string/all_events_text"
+            android:spinnerMode="dropdown"
+            android:backgroundTint="@color/white"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            android:overlapAnchor="false"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,7 +31,7 @@
             android:paddingBottom="16dp"
             android:paddingEnd="0dp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/title_tv"
+            app:layout_constraintBottom_toBottomOf="@+id/title_spinner"
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <androidx.constraintlayout.widget.Barrier
@@ -38,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:barrierDirection="bottom"
-            app:constraint_referenced_ids="location_iv,title_tv" />
+            app:constraint_referenced_ids="location_iv,title_spinner" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_events"

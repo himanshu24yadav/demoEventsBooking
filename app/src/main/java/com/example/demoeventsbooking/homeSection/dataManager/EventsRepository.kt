@@ -28,6 +28,8 @@ object EventsRepository : ApiResponseCallback {
 
     private fun handleSuccess(responseModelEvents: ResponseModelEvents) {
         val eventsModel = ModelEvents()
+
+        //adding all events
         when (val linkedHashMapOfEvents = responseModelEvents.list?.masterList) {
             null -> {
                 eventsModel.status = UtilConstants.STATUS_NO_DATA
@@ -46,6 +48,17 @@ object EventsRepository : ApiResponseCallback {
                 }
             }
         }
+
+        //adding featured events
+        responseModelEvents.featuredEventList?.let {
+            eventsModel.featuredEvents = it
+        }
+
+        //adding popular events
+        responseModelEvents.popularEventList?.let {
+            eventsModel.popularEvents = it
+        }
+
         masterEventsList.value = eventsModel
     }
 

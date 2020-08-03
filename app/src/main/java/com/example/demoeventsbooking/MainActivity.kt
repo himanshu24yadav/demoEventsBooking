@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.MenuItem
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
 import androidx.databinding.DataBindingUtil
@@ -17,21 +19,27 @@ import com.example.demoeventsbooking.helpers.isNetworkAvailable
 import com.example.demoeventsbooking.homeSection.adapter.EventAdapter
 import com.example.demoeventsbooking.homeSection.dataManager.MasterListEventModel
 import com.example.demoeventsbooking.homeSection.dataManager.ViewModelEventsList
+import com.example.demoeventsbooking.homeSection.model.ModelEvents
+
 
 const val VIEW_FOR_SUCCESS = 100
 const val VIEW_FOR_FAILURE = 200
 const val VIEW_FOR_NO_DATA = 300
 const val VIEW_FOR_NETWORK_NOT_AVAILABLE = 400
+const val EVENT_TYPE_ALL = "Discover Events"
+const val EVENT_TYPE_FEATURED = "Featured Events"
+const val EVENT_TYPE_POPULAR = "Popular Events"
 
-class MainActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
+class MainActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener, AdapterView.OnItemSelectedListener {
 
     private var mEventViewModel : ViewModelEventsList? = null
     private lateinit var mLayoutBinding: ActivityMainBinding
     private var mLinearLayoutManager: RecyclerView.LayoutManager? = null
     private var mEventAdapter:EventAdapter? = null
-    private var mEventList:ArrayList<MasterListEventModel> = ArrayList()
+    private var mEventData : ModelEvents? = null
     private var mSelectedCity: String = UtilConstants.DEFAULT_CITY
     private var mPopupMenu: PopupMenu? = null
+    private var mCurrentEventType = EVENT_TYPE_ALL
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,6 +66,7 @@ class MainActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
         }
 
         mPopupMenu?.setOnMenuItemClickListener(this@MainActivity)
+        mLayoutBinding.titleSpinner.onItemSelectedListener = this@MainActivity
     }
 
     private fun initView() {
@@ -69,6 +78,14 @@ class MainActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
         mPopupMenu?.inflate(R.menu.menu_locations)
         mPopupMenu?.gravity = Gravity.END
         mPopupMenu?.menu?.findItem(R.id.online_item)?.isChecked = true
+        setSpinnerView()
+    }
+
+    private fun setSpinnerView() {
+        val eventTypes = listOf(EVENT_TYPE_ALL, EVENT_TYPE_FEATURED, EVENT_TYPE_POPULAR)
+        val dataAdapter = ArrayAdapter(this,R.layout.layout_spinner_item, eventTypes)
+        dataAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
+        mLayoutBinding.titleSpinner.adapter = dataAdapter
     }
 
     private fun initObject() {
@@ -81,8 +98,7 @@ class MainActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
         mEventViewModel?.getAllEvents()?.observe(this, Observer {
             when(it.status) {
                 UtilConstants.STATUS_SUCCESS -> {
-                    mEventList.clear()
-                    mEventList.addAll(it.eventData)
+                    mEventData = it
                     updateView(VIEW_FOR_SUCCESS)
                 }
                 UtilConstants.STATUS_FAILURE -> {
@@ -136,11 +152,20 @@ class MainActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
     }
 
     private fun setEventAdapter() {
+        val eventListToShow = when(mCurrentEventType) {
+            EVENT_TYPE_POPULAR -> { mEventData?.popularEvents }
+            EVENT_TYPE_FEATURED -> { mEventData?.featuredEvents }
+            else -> { mEventData?.eventData }
+        }
+        if(eventListToShow == null || eventListToShow.size==0) {
+            updateView(VIEW_FOR_NO_DATA)
+            return
+        }
         if (mEventAdapter != null) {
-            mEventAdapter!!.updateList(mEventList)
+            mEventAdapter!!.updateList(eventListToShow)
             mEventAdapter!!.notifyDataSetChanged()
         } else {
-            mEventAdapter = EventAdapter(this, mEventList)
+            mEventAdapter = EventAdapter(this, eventListToShow)
             mLayoutBinding.rvEvents.adapter = mEventAdapter
         }
     }
@@ -172,5 +197,15 @@ class MainActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
         item.isChecked = true
         initFetchEventData()
         return true
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {}
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        val selectedItem = parent?.getItemAtPosition(position).toString()
+        if(selectedItem != mCurrentEventType) {
+            mCurrentEventType = selectedItem
+            setEventAdapter()
+        }
     }
 }

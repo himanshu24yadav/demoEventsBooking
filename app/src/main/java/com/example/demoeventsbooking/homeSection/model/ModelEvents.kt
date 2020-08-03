@@ -4,6 +4,8 @@ import com.example.demoeventsbooking.homeSection.dataManager.MasterListEventMode
 
 class ModelEvents (
     var eventData : ArrayList<MasterListEventModel> = ArrayList(),
+    var featuredEvents : ArrayList<MasterListEventModel> = ArrayList(),
+    var popularEvents : ArrayList<MasterListEventModel> = ArrayList(),
     var status : String? = null,
     var msg:String? = null
 )

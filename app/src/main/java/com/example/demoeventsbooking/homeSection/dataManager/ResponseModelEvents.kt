@@ -6,7 +6,13 @@ import com.google.gson.annotations.SerializedName
 data class ResponseModelEvents(
     @SerializedName("list")
     @Expose
-    val list: EventsList?
+    val list: EventsList?,
+    @SerializedName("popular")
+    @Expose
+    val popularEventList: ArrayList<MasterListEventModel>?,
+    @SerializedName("featured")
+    @Expose
+    val featuredEventList: ArrayList<MasterListEventModel>?
 )
 
 data class EventsList(
