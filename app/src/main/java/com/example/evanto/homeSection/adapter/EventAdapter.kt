@@ -1,4 +1,4 @@
-package com.example.demoeventsbooking.homeSection.adapter
+package com.example.evanto.homeSection.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,9 +7,9 @@ import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.demoeventsbooking.R
-import com.example.demoeventsbooking.databinding.LayoutEventItemBinding
-import com.example.demoeventsbooking.homeSection.dataManager.MasterListEventModel
+import com.example.evanto.R
+import com.example.evanto.databinding.LayoutEventItemBinding
+import com.example.evanto.homeSection.dataManager.MasterListEventModel
 
 class EventAdapter(private val mContext:Context?,private var mEventList:ArrayList<MasterListEventModel>?) : RecyclerView.Adapter<EventAdapter.MyViewHolder>(){
 

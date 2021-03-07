@@ -1,4 +1,4 @@
-package com.example.demoeventsbooking
+package com.example.evanto
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

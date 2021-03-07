@@ -1,4 +1,4 @@
-package com.example.demoeventsbooking.helpers
+package com.example.evanto.helpers
 
 class UtilConstants {
     companion object {

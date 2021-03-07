@@ -1,11 +1,10 @@
-package com.example.demoeventsbooking.retrofitManager
+package com.example.evanto.retrofitManager
 
-import com.example.demoeventsbooking.homeSection.dataManager.ResponseModelEvents
+import com.example.evanto.homeSection.dataManager.ResponseModelEvents
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.lang.Exception
-import java.util.*
 import kotlin.collections.HashMap
 
 class RetrofitCallbackManager (private var apiInterface: ApiInterface?, private var apiResponseCallback: ApiResponseCallback?, private var fieldMap: HashMap<String, String>?, private var apiProviderConstants: Int) {

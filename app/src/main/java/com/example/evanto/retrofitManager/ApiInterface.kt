@@ -1,6 +1,6 @@
-package com.example.demoeventsbooking.retrofitManager
+package com.example.evanto.retrofitManager
 
-import com.example.demoeventsbooking.homeSection.dataManager.ResponseModelEvents
+import com.example.evanto.homeSection.dataManager.ResponseModelEvents
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.QueryMap

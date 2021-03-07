@@ -1,4 +1,4 @@
-package com.example.demoeventsbooking
+package com.example.evanto
 
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package com.example.demoeventsbooking
+package com.example.evanto
 
 import android.os.Bundle
 import android.view.Gravity
@@ -13,13 +13,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.demoeventsbooking.databinding.ActivityMainBinding
-import com.example.demoeventsbooking.helpers.UtilConstants
-import com.example.demoeventsbooking.helpers.isNetworkAvailable
-import com.example.demoeventsbooking.homeSection.adapter.EventAdapter
-import com.example.demoeventsbooking.homeSection.dataManager.MasterListEventModel
-import com.example.demoeventsbooking.homeSection.dataManager.ViewModelEventsList
-import com.example.demoeventsbooking.homeSection.model.ModelEvents
+import com.example.evanto.databinding.ActivityMainBinding
+import com.example.evanto.helpers.UtilConstants
+import com.example.evanto.helpers.isNetworkAvailable
+import com.example.evanto.homeSection.adapter.EventAdapter
+import com.example.evanto.homeSection.dataManager.ViewModelEventsList
+import com.example.evanto.homeSection.model.ModelEvents
 
 const val VIEW_FOR_SUCCESS = 100
 const val VIEW_FOR_FAILURE = 200

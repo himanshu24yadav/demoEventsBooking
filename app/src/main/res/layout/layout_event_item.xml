@@ -5,7 +5,7 @@
     <data>
         <variable
             name="model"
-            type="com.example.demoeventsbooking.homeSection.dataManager.MasterListEventModel" />
+            type="com.example.evanto.homeSection.dataManager.MasterListEventModel" />
     </data>
 
     <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"

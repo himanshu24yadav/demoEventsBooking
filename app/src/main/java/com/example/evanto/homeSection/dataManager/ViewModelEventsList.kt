@@ -1,9 +1,9 @@
-package com.example.demoeventsbooking.homeSection.dataManager
+package com.example.evanto.homeSection.dataManager
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.example.demoeventsbooking.helpers.UtilConstants
-import com.example.demoeventsbooking.homeSection.model.ModelEvents
+import com.example.evanto.helpers.UtilConstants
+import com.example.evanto.homeSection.model.ModelEvents
 
 class ViewModelEventsList : ViewModel() {
 

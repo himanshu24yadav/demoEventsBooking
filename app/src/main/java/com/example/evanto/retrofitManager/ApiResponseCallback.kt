@@ -1,4 +1,4 @@
-package com.example.demoeventsbooking.retrofitManager
+package com.example.evanto.retrofitManager
 
 import retrofit2.Response
 

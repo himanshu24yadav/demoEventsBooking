@@ -1,6 +1,6 @@
-package com.example.demoeventsbooking.homeSection.model
+package com.example.evanto.homeSection.model
 
-import com.example.demoeventsbooking.homeSection.dataManager.MasterListEventModel
+import com.example.evanto.homeSection.dataManager.MasterListEventModel
 
 class ModelEvents (
     var eventData : ArrayList<MasterListEventModel> = ArrayList(),

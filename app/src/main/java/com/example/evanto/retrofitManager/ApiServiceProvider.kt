@@ -1,6 +1,6 @@
-package com.example.demoeventsbooking.retrofitManager
+package com.example.evanto.retrofitManager
 
-import com.example.demoeventsbooking.helpers.UtilConstants.Companion.API_CONSTANT_DEFAULT
+import com.example.evanto.helpers.UtilConstants.Companion.API_CONSTANT_DEFAULT
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 

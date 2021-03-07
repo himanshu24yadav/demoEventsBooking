@@ -1,12 +1,12 @@
-package com.example.demoeventsbooking.homeSection.dataManager
+package com.example.evanto.homeSection.dataManager
 
 import androidx.lifecycle.MutableLiveData
-import com.example.demoeventsbooking.helpers.UtilConstants
-import com.example.demoeventsbooking.helpers.UtilMethods
-import com.example.demoeventsbooking.homeSection.model.ModelEvents
-import com.example.demoeventsbooking.retrofitManager.ApiResponseCallback
-import com.example.demoeventsbooking.retrofitManager.ApiServiceProvider
-import com.example.demoeventsbooking.retrofitManager.UrlContainer
+import com.example.evanto.helpers.UtilConstants
+import com.example.evanto.helpers.UtilMethods
+import com.example.evanto.homeSection.model.ModelEvents
+import com.example.evanto.retrofitManager.ApiResponseCallback
+import com.example.evanto.retrofitManager.ApiServiceProvider
+import com.example.evanto.retrofitManager.UrlContainer
 import retrofit2.Response
 import java.util.*
 

@@ -1,4 +1,4 @@
-package com.example.demoeventsbooking.retrofitManager
+package com.example.evanto.retrofitManager
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

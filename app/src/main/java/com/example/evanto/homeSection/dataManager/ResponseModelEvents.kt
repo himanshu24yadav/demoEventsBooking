@@ -1,4 +1,4 @@
-package com.example.demoeventsbooking.homeSection.dataManager
+package com.example.evanto.homeSection.dataManager
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
